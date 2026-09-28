@@ -8,5 +8,4 @@ import org.springframework.web.bind.annotation.RestController;
 public class InfoController {
     @GetMapping("/info")
     public String info() { return "This application is to give a mini tutorial about Spring boots & Swagger UI";}
-
 }
