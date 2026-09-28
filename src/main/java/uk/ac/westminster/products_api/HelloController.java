@@ -25,7 +25,7 @@ public class HelloController {
 
     @GetMapping("/status")
     public String status(){
-        return "API running -" + LocalDate.now().toString();
+        return "Today's date is" + LocalDate.now().toString();
     }
 
     // TODO (Activity 3): add your /goodbye endpoint here.
@@ -33,4 +33,6 @@ public class HelloController {
     @GetMapping("/goodbye")
 
     public String goodbye() { return "goodbye from spring boot";}
+
+
 }
