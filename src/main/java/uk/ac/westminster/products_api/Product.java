@@ -23,6 +23,6 @@ public class Product {
     that produces a message like a syntax error.
     */
     public double getPrice() {return price;}
-     */
+
 
 }
