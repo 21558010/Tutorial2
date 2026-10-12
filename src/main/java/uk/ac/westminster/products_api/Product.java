@@ -15,7 +15,7 @@ public class Product {
         this.price = price;
     }
 
-    public Long getID() {return id;}
+    public Long getId() {return id;}
 
     public String getName() {return name;}
     /* I think when getName is missing it will be skipped and not appear in the response
@@ -24,5 +24,15 @@ public class Product {
     */
     public double getPrice() {return price;}
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
 }
