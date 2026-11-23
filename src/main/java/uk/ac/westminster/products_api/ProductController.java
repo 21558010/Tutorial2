@@ -1,23 +1,26 @@
 package uk.ac.westminster.products_api;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import uk.ac.westminster.products_api.Exception.ProductNotFoundException;
+
 import java.util.List;
 
 @RestController
 public class ProductController {
 
-    @Autowired
-    private ProductService productService;
+
+    private final ProductService productService;
+
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
 
     @GetMapping("/products")
     public List<Product> getALLProducts() {return productService.getAllProducts();}
 
-
-
     @GetMapping("/products/{id}")
     public Product getProductById(@PathVariable Long id) {
-        return productService.getProductById(id).orElse(null);
+        return productService.getProductById(id).orElseThrow(() -> new ProductNotFoundException(id));
     }
 
     @PostMapping("/products")
@@ -30,13 +33,13 @@ public class ProductController {
         productService.deleteProduct(id);
     }
 
-    @GetMapping ("/products/search")
-    public List<Product> search(@RequestParam String name) {
-        return productService.findByName(name);
-    }
-
-    @GetMapping("/products/summaries")
-    public List<String> getSummaries() {
-        return productService.getAllSummaries();}
-
+//    @GetMapping ("/products/search")
+//    public List<Product> search(@RequestParam String name) {
+//        return productService.findByName(name);
+//    }
+//
+//    @GetMapping("/products/summaries")
+//    public List<String> getSummaries() {
+//        return productService.getAllSummaries();
+//    }
 }
